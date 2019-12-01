@@ -1,5 +1,6 @@
 package com.vegecipe.vegeshop.domain;
 
+import com.vegecipe.vegeshop.exception.NotEnoughStockException;
 import lombok.Getter;
 import lombok.Setter;
 
@@ -22,13 +23,29 @@ public abstract class Item {
     private int price;
     private int stockQuantity;
 
+    // 실무에서는 ManyToMany는 절대 사용하면 안됩니다.
     @ManyToMany(mappedBy = "items")
     private List<Category> categories = new ArrayList<>();
 
-    @ManyToOne
-    @JoinColumn(name = "parent_id")
-    private Category parent;
+    //==비즈니스 로직==//
+    /**
+     * stock 증가
+     * @param quantity
+     */
+    public void addStock(int quantity) {
+        this.stockQuantity += quantity;
+    }
 
-    @OneToMany(mappedBy = "parent")
-    private List<Category> child = new ArrayList<>();
+    /**
+     * stock 감소
+     * @param quantity
+     */
+    public void reduceStock(int quantity) {
+        int restStock = this.stockQuantity - quantity;
+        if (restStock < 0 ) {
+            throw new NotEnoughStockException("need more stock");
+        }
+        this.stockQuantity = restStock;
+    }
+
 }

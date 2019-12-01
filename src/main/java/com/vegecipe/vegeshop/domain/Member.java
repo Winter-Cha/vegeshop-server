@@ -22,5 +22,6 @@ public class Member {
 
     @OneToMany(mappedBy = "member") // mappedBy : 나는 그냥 연결된 거울일뿐이야 변경할 수 없어
     private List<Order> orders = new ArrayList<>();
+
 }
 
