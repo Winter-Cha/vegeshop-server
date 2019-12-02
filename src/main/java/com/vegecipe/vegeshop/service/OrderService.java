@@ -5,7 +5,6 @@ import com.vegecipe.vegeshop.repository.ItemRepository;
 import com.vegecipe.vegeshop.repository.MemberRepository;
 import com.vegecipe.vegeshop.repository.OrderRepository;
 import lombok.RequiredArgsConstructor;
-import org.graalvm.compiler.serviceprovider.ServiceProvider;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 

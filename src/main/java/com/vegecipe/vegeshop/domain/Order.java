@@ -1,7 +1,6 @@
 package com.vegecipe.vegeshop.domain;
 
 import lombok.*;
-import org.graalvm.compiler.core.common.type.ArithmeticOpTable;
 
 import javax.persistence.*;
 import java.time.LocalDateTime;
