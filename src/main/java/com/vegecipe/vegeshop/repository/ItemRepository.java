@@ -2,9 +2,11 @@ package com.vegecipe.vegeshop.repository;
 
 import com.vegecipe.vegeshop.domain.Item;
 import lombok.RequiredArgsConstructor;
+import org.apache.logging.log4j.message.StringMapMessage;
 import org.springframework.stereotype.Repository;
 
 import javax.persistence.EntityManager;
+import javax.transaction.Transactional;
 import java.util.List;
 
 @Repository

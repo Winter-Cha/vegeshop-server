@@ -4,11 +4,13 @@ import com.vegecipe.vegeshop.domain.*;
 import com.vegecipe.vegeshop.repository.ItemRepository;
 import com.vegecipe.vegeshop.repository.MemberRepository;
 import com.vegecipe.vegeshop.repository.OrderRepository;
+import com.vegecipe.vegeshop.repository.OrderSearch;
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
 import java.time.LocalDateTime;
+import java.util.List;
 
 @Service
 @Transactional(readOnly = true)
@@ -57,9 +59,8 @@ public class OrderService {
         order.cancel();
     }
 
-
     //검색
-//    public List<Order> findOrder(OrderSearch orderSearch) {
-//        return orderRepository.findAll(orderSearch);
-//    }
+    public List<Order> findOrders(OrderSearch orderSearch) {
+        return orderRepository.findAllByString(orderSearch);
+    }
 }
