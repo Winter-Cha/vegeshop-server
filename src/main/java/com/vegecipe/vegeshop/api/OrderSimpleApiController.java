@@ -5,7 +5,7 @@ import com.vegecipe.vegeshop.domain.Order;
 import com.vegecipe.vegeshop.domain.OrderStatus;
 import com.vegecipe.vegeshop.repository.OrderRepository;
 import com.vegecipe.vegeshop.repository.OrderSearch;
-import com.vegecipe.vegeshop.repository.order.query.OrderQueryRepository;
+import com.vegecipe.vegeshop.repository.order.query.OrderSimpleQueryRepository;
 import com.vegecipe.vegeshop.repository.order.query.OrderSimpleQueryDto;
 import lombok.Data;
 import lombok.RequiredArgsConstructor;
@@ -28,7 +28,7 @@ import static java.util.stream.Collectors.*;
 public class OrderSimpleApiController {
 
     private final OrderRepository orderRepository;
-    private final OrderQueryRepository orderQueryRepository;
+    private final OrderSimpleQueryRepository orderSimpleQueryRepository;
 
     @GetMapping("/api/v1/simple-orders")
     public List<Order> ordersV1() {
@@ -62,7 +62,7 @@ public class OrderSimpleApiController {
     // Repository에 API 스펙이 드러와서 API 스펙이 변경되면 Repository를 뜯어 고쳐야 됨.
     @GetMapping("/api/v4/simple-orders")
     public List<OrderSimpleQueryDto> ordersV4() {
-        return orderQueryRepository.findOrderDtos();
+        return orderSimpleQueryRepository.findOrderDtos();
     }
 
     @Data
